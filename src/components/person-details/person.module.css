@@ -1,0 +1,20 @@
+.person_details {
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: row;
+    padding: 1rem;
+  }
+  
+  .person_details .person_image {
+    width: 40%;
+    height: 40%;
+    border-radius: 10px;
+  }
+  
+  .person_details .list_group_item {
+    padding: .25rem;
+  }
+  
+  .person_details .list_group_item .term{
+    margin-right: .5rem;
+  }
