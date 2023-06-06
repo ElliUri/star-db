@@ -3,6 +3,7 @@ import Header from "../header/header";
 import RandomPlanet from "../random-planet/random";
 import ItemList from "../item-list/item-list";
 import PersonDetails from "../person-details/person-details";
+import Spinner from "../spinner/spinner";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <PersonDetails />
         </div>
       </div>
+      {/* <Spinner /> */}
     </div>
   );
 }
