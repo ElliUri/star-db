@@ -1,26 +1,53 @@
-import React from "react";
+import React, {Component} from "react";
 import Header from "../header/header";
 import RandomPlanet from "../random-planet/random";
-import ItemList from "../item-list/item-list";
-import PersonDetails from "../person-details/person-details";
-import Spinner from "../spinner/spinner";
+import ErrorButton from "../error-button/error-button";
+// import ItemList from "../item-list/item-list";
+// import PersonDetails from "../person-details/person-details";
+import PeoplePage from "../people-page/people-page";
+import ErrorBoundry from "../error-boundry/error-boundry";
+// import ErrorIndicator from "../error-indicator/error-indicator";
+// import SwapiService from "../../sevices/swapi-service";
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <RandomPlanet />
-      <div className="row mb2">
-        <div className="col-md-6">
-          <ItemList />
+export default class App extends Component {
+
+  state = {
+    showRandomPlanet: true
+  };
+
+  toggleRandomPlanet = () => {
+    this.setState((state) => {
+      return {
+        showRandomPlanet: !state.showRandomPlanet
+      }
+    });
+  };
+
+  render() {
+
+    const planet = this.state.showRandomPlanet ?
+      <RandomPlanet/> :
+      null;
+
+    return (
+      <ErrorBoundry>
+        <div className="stardb-app">
+          <Header />
+          { planet }
+
+          <div className="row mb2 button-row">
+            <button
+              className="toggle-planet btn btn-warning btn-lg"
+              onClick={this.toggleRandomPlanet}>
+              Toggle Random Planet
+            </button>
+            <ErrorButton />
+          </div>
+
+          <PeoplePage />
+
         </div>
-        <div className="col-md-6">
-          <PersonDetails />
-        </div>
-      </div>
-      {/* <Spinner /> */}
-    </div>
-  );
+      </ErrorBoundry>
+    );
+  }
 }
-
-export default App;
